@@ -1,234 +1,198 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Arial; color: #141414; -webkit-text-stroke: #141414; background-color: #ffffff; min-height: 11.0px}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Arial; color: #141414; -webkit-text-stroke: #141414; background-color: #ffffff}
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACK COCOON - Цифровой Штаб v2</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; display: flex; flex-direction: column; height: 100vh; }
+    .tabs { display: flex; background: #16213e; border-bottom: 2px solid #0f3460; flex-wrap: wrap; }
+    .tab { padding: 10px 15px; cursor: pointer; transition: 0.3s; font-size: 14px; white-space: nowrap; }
+    .tab:hover { background: #0f3460; }
+    .active { background: #0f3460; border-bottom: 2px solid #e94560; }
+    .panel { flex: 1; display: none; overflow: hidden; position: relative; }
+    .panel.active { display: flex; justify-content: center; align-items: center; background: #1a1a2e; }
+    canvas { display: block; }
+    svg { max-width: 90vw; max-height: 80vh; background: #16213e; padding: 20px; border-radius: 10px; }
+    .btn-print { position: absolute; top: 20px; right: 20px; padding: 10px 15px; background: #e94560; border: none; color: white; cursor: pointer; border-radius: 5px; z-index: 10; }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p2"><span class="s1">&lt;html lang="ru"&gt;</span></p>
-<p class="p2"><span class="s1">&lt;head&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;BLACK COCOON - Цифровой Штаб v2&lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; display: flex; flex-direction: column; height: 100vh; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.tabs { display: flex; background: #16213e; border-bottom: 2px solid #0f3460; flex-wrap: wrap; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.tab { padding: 10px 15px; cursor: pointer; transition: 0.3s; font-size: 14px; white-space: nowrap; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.tab:hover { background: #0f3460; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.active { background: #0f3460; border-bottom: 2px solid #e94560; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.panel { flex: 1; display: none; overflow: hidden; position: relative; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.panel.active { display: flex; justify-content: center; align-items: center; background: #1a1a2e; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>canvas { display: block; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>svg { max-width: 90vw; max-height: 80vh; background: #16213e; padding: 20px; border-radius: 10px; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>.btn-print { position: absolute; top: 20px; right: 20px; padding: 10px 15px; background: #e94560; border: none; color: white; cursor: pointer; border-radius: 5px; z-index: 10; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p2"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div class="tabs"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab active" onclick="switchTab('3d')"&gt;3D Каркас&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('front')"&gt;Фронтон&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('side')"&gt;Вид сбоку&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('top')"&gt;Вид сверху&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('lathing')"&gt;Обрешетка&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('node')"&gt;Узел касания&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="tab" onclick="switchTab('bunker')"&gt;Тепловой бункер&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- 3D Каркас --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="3d" class="panel active"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('3d')"&gt;Печать 3D&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Фронтон --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="front" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('front')"&gt;Печать Фронтон&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="front-svg" viewBox="0 0 800 600"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="100" y1="500" x2="700" y2="500" stroke="white" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="100" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="700" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="400" y="30" fill="white" text-anchor="middle" font-size="20" font-weight="bold"&gt;ФРОНТОН (Вид спереди)&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="380" y="520" fill="white" text-anchor="end" font-size="14"&gt;Основание: 14.75 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="420" y="520" fill="white" text-anchor="start" font-size="14"&gt;Высота: 9.44 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="60" y="300" fill="white" font-size="14" transform="rotate(-90,60,300)"&gt;Длина ската: 12.00 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="182" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="231" y="430" fill="white" text-anchor="middle" font-size="12"&gt;Конт.&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="231" y="445" fill="white" text-anchor="middle" font-size="10"&gt;2.44×2.59&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="518" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="567" y="430" fill="white" text-anchor="middle" font-size="12"&gt;Конт.&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="567" y="445" fill="white" text-anchor="middle" font-size="10"&gt;2.44×2.59&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="281" y1="420" x2="518" y2="420" stroke="#e94560" stroke-width="2" stroke-dasharray="5,5"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="399" y="415" fill="#e94560" text-anchor="middle" font-size="14"&gt;5.80 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;circle cx="182" cy="394" r="3" fill="yellow"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;circle cx="617" cy="394" r="3" fill="yellow"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Вид сбоку --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="side" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('side')"&gt;Печать Вид сбоку&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="side-svg" viewBox="0 0 800 200"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="50" y1="100" x2="750" y2="100" stroke="white" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="50" y1="100" x2="50" y2="20" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="750" y1="100" x2="750" y2="20" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="50" y1="20" x2="750" y2="20" stroke="#4444ff" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="400" y="15" fill="white" text-anchor="middle"&gt;Длина: 10.00 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="400" y="120" fill="white" text-anchor="middle"&gt;Скат: 12.00 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="30" y="60" fill="white" transform="rotate(-90,30,60)"&gt;Высота: 9.44 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Вид сверху --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="top" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('top')"&gt;Печать Вид сверху&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="top-svg" viewBox="0 0 600 400"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="50" y="50" width="500" height="300" fill="none" stroke="white" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="300" y="30" fill="white" text-anchor="middle"&gt;ВИД СВЕРХУ&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="300" y="370" fill="white" text-anchor="middle"&gt;14.75 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="10" y="200" fill="white" transform="rotate(-90,10,200)"&gt;10.00 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="150" y="100" width="40" height="200" fill="#aaaaaa" stroke="white"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="410" y="100" width="40" height="200" fill="#aaaaaa" stroke="white"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="170" y="90" fill="white" text-anchor="middle" font-size="12"&gt;Конт 1&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="430" y="90" fill="white" text-anchor="middle" font-size="12"&gt;Конт 2&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="300" y="200" fill="#e94560" text-anchor="middle"&gt;Зазор 5.80 м&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Обрешётка ската --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="lathing" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('lathing')"&gt;Печать Обрешетка&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="lathing-svg" viewBox="0 0 800 400"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="50" y1="350" x2="750" y2="350" stroke="white" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="50" y1="350" x2="400" y2="50" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="400" y="30" fill="white" text-anchor="middle" font-size="16"&gt;ОБРЕШЕТКА СКАТА (разрез)&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="400" y="380" fill="white" text-anchor="middle"&gt;Длина ската: 12.00 м, шаг трапов: 300 мм&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Ступени (трапы) --&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="80" y1="340" x2="120" y2="340" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="140" y1="328" x2="180" y2="328" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="200" y1="315" x2="240" y2="315" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="260" y1="302" x2="300" y2="302" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="320" y1="289" x2="360" y2="289" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="380" y1="276" x2="420" y2="276" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="440" y1="263" x2="480" y2="263" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="500" y1="250" x2="540" y2="250" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="560" y1="237" x2="600" y2="237" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="620" y1="224" x2="660" y2="224" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="680" y1="211" x2="720" y2="211" stroke="#00ccff" stroke-width="4"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="100" y="335" fill="white" font-size="10"&gt;трап&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="200" y="310" fill="white" font-size="10"&gt;→ ходьба при засыпке&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Узел касания --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="node" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('node')"&gt;Печать Узел&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="node-svg" viewBox="0 0 600 400"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="100" y="250" width="120" height="90" fill="#888888" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="160" y="300" fill="white" text-anchor="middle" font-size="12"&gt;Контейнер&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;line x1="80" y1="250" x2="220" y2="50" stroke="#ff4444" stroke-width="3"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="210" y="60" width="30" height="15" fill="#8b4513" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="260" y="72" fill="white" font-size="12"&gt;Стропило (пакет 3×100×50)&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;circle cx="220" cy="250" r="4" fill="yellow"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="240" y="255" fill="yellow" font-size="12"&gt;Точка касания ската&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="50" y="40" fill="white" font-size="16" font-weight="bold"&gt;УЗЕЛ ПРИМЫКАНИЯ&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="50" y="70" fill="white" font-size="12"&gt;Угол 52°&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;!-- Тепловой бункер --&gt;</span></p>
-<p class="p2"><span class="s1">&lt;div id="bunker" class="panel"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="btn-print" onclick="printPanel('bunker')"&gt;Печать Бункер&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg id="bunker-svg" viewBox="0 0 400 800"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="100" y="50" width="200" height="700" fill="none" stroke="white" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="200" y="30" fill="white" text-anchor="middle" font-size="16"&gt;40-фут контейнер&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="200" y="770" fill="white" text-anchor="middle" font-size="12"&gt;Песок (~65 т)&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Кирпичные каналы --&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="130" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;rect x="230" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="150" y="400" fill="white" text-anchor="middle" transform="rotate(90,150,400)"&gt;Кирпичный канал&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="250" y="400" fill="white" text-anchor="middle" transform="rotate(90,250,400)"&gt;Кирпичный канал&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Змеевики --&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;path d="M80,200 Q90,180 100,200 T120,200" fill="none" stroke="#00ffcc" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="70" y="180" fill="#00ffcc" font-size="10"&gt;Змеевик ГВС&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;path d="M280,500 Q290,480 300,500 T320,500" fill="none" stroke="#ff9900" stroke-width="2"/&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;text x="290" y="480" fill="#ff9900" font-size="10"&gt;Паровой змеевик&lt;/text&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/svg&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">&lt;script&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>function switchTab(name) {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>document.querySelectorAll('.tab').forEach(t =&gt; t.classList.remove('active'));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>document.querySelectorAll('.panel').forEach(p =&gt; p.classList.remove('active'));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById(name).classList.add('active');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>document.querySelector(`.tab[onclick*="${name}"]`).classList.add('active');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (name === '3d') init3D();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>function printPanel(name) {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const panel = document.getElementById(name);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const clone = panel.cloneNode(true);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const win = window.open('', '_blank');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>win.document.write('&lt;html&gt;&lt;head&gt;&lt;title&gt;BLACK COCOON - Чертеж&lt;/title&gt;&lt;/head&gt;&lt;body style="background:white; display:flex; justify-content:center;"&gt;');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>win.document.write(clone.innerHTML);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>win.document.write('&lt;/body&gt;&lt;/html&gt;');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>win.document.close();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>win.print();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>function init3D() {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (window._3dready) return;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>window._3dready = true;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const panel = document.getElementById('3d');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>panel.innerHTML = '&lt;button class="btn-print" onclick="printPanel(\'3d\')"&gt;Печать 3D&lt;/button&gt;';</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const script = document.createElement('script');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>script.onload = function() {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>const orbitScript = document.createElement('script');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>orbitScript.onload = function() {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const W = 14.75, L = 10.0, H = 9.44;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const scene = new THREE.Scene(); scene.background = new THREE.Color(0x111122);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const camera = new THREE.PerspectiveCamera(45, panel.clientWidth / panel.clientHeight, 0.1, 1000);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>camera.position.set(15, 10, 20); camera.lookAt(0, 0, 4);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const renderer = new THREE.WebGLRenderer({ antialias: true });</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>renderer.setSize(panel.clientWidth, panel.clientHeight);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>panel.appendChild(renderer.domElement);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const controls = new THREE.OrbitControls(camera, renderer.domElement);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>controls.target.set(0, 0, 4); controls.update();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>scene.add(new THREE.AmbientLight(0x404066));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const dirLight = new THREE.DirectionalLight(0xffffff, 0.8); dirLight.position.set(10, 20, 15); scene.add(dirLight);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>function addLine(p1, p2, color) {</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>const g = new THREE.BufferGeometry();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>g.setAttribute('position', new THREE.BufferAttribute(new Float32Array([p1.x, p1.y, p1.z, p2.x, p2.y, p2.z]), 3));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color })));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const v0 = new THREE.Vector3(-W/2, -L/2, 0), v1 = new THREE.Vector3(W/2, -L/2, 0), v2 = new THREE.Vector3(W/2, L/2, 0), v3 = new THREE.Vector3(-W/2, L/2, 0);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>const v4 = new THREE.Vector3(0, -L/2, H), v5 = new THREE.Vector3(0, L/2, H);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>addLine(v0, v1, 0xffffff); addLine(v1, v2, 0xffffff); addLine(v2, v3, 0xffffff); addLine(v3, v0, 0xffffff);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>addLine(v0, v4, 0xff4444); addLine(v1, v4, 0xff4444); addLine(v2, v5, 0xff4444); addLine(v3, v5, 0xff4444);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>addLine(v4, v5, 0x4444ff);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>scene.add(new THREE.GridHelper(15, 20, 0x333366, 0x333366));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>animate();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>window.addEventListener('resize', () =&gt; { camera.aspect = panel.clientWidth / panel.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(panel.clientWidth, panel.clientHeight); });</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>};</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>document.head.appendChild(orbitScript);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>document.head.appendChild(script);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>window.onload = function() { switchTab('3d'); };</span></p>
-<p class="p2"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p2"><span class="s1">&lt;/html&gt;</span></p>
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('3d')">3D Каркас</div>
+  <div class="tab" onclick="switchTab('front')">Фронтон</div>
+  <div class="tab" onclick="switchTab('side')">Вид сбоку</div>
+  <div class="tab" onclick="switchTab('top')">Вид сверху</div>
+  <div class="tab" onclick="switchTab('lathing')">Обрешетка</div>
+  <div class="tab" onclick="switchTab('node')">Узел касания</div>
+  <div class="tab" onclick="switchTab('bunker')">Тепловой бункер</div>
+</div>
+
+<div id="3d" class="panel active">
+  <button class="btn-print" onclick="printPanel('3d')">Печать 3D</button>
+</div>
+<div id="front" class="panel">
+  <button class="btn-print" onclick="printPanel('front')">Печать Фронтон</button>
+  <svg id="front-svg" viewBox="0 0 800 600">
+    <line x1="100" y1="500" x2="700" y2="500" stroke="white" stroke-width="2"/>
+    <line x1="100" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/>
+    <line x1="700" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/>
+    <text x="400" y="30" fill="white" text-anchor="middle" font-size="20" font-weight="bold">ФРОНТОН (Вид спереди)</text>
+    <text x="380" y="520" fill="white" text-anchor="end" font-size="14">Основание: 14.75 м</text>
+    <text x="420" y="520" fill="white" text-anchor="start" font-size="14">Высота: 9.44 м</text>
+    <text x="60" y="300" fill="white" font-size="14" transform="rotate(-90,60,300)">Длина ската: 12.00 м</text>
+    <rect x="182" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/>
+    <text x="231" y="430" fill="white" text-anchor="middle" font-size="12">Конт.</text>
+    <text x="231" y="445" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
+    <rect x="518" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/>
+    <text x="567" y="430" fill="white" text-anchor="middle" font-size="12">Конт.</text>
+    <text x="567" y="445" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
+    <line x1="281" y1="420" x2="518" y2="420" stroke="#e94560" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="399" y="415" fill="#e94560" text-anchor="middle" font-size="14">5.80 м</text>
+    <circle cx="182" cy="394" r="3" fill="yellow"/>
+    <circle cx="617" cy="394" r="3" fill="yellow"/>
+  </svg>
+</div>
+<div id="side" class="panel">
+  <button class="btn-print" onclick="printPanel('side')">Печать Вид сбоку</button>
+  <svg id="side-svg" viewBox="0 0 800 200">
+    <line x1="50" y1="100" x2="750" y2="100" stroke="white" stroke-width="2"/>
+    <line x1="50" y1="100" x2="50" y2="20" stroke="#ff4444" stroke-width="3"/>
+    <line x1="750" y1="100" x2="750" y2="20" stroke="#ff4444" stroke-width="3"/>
+    <line x1="50" y1="20" x2="750" y2="20" stroke="#4444ff" stroke-width="2"/>
+    <text x="400" y="15" fill="white" text-anchor="middle">Длина: 10.00 м</text>
+    <text x="400" y="120" fill="white" text-anchor="middle">Скат: 12.00 м</text>
+    <text x="30" y="60" fill="white" transform="rotate(-90,30,60)">Высота: 9.44 м</text>
+  </svg>
+</div>
+<div id="top" class="panel">
+  <button class="btn-print" onclick="printPanel('top')">Печать Вид сверху</button>
+  <svg id="top-svg" viewBox="0 0 600 400">
+    <rect x="50" y="50" width="500" height="300" fill="none" stroke="white" stroke-width="2"/>
+    <text x="300" y="30" fill="white" text-anchor="middle">ВИД СВЕРХУ</text>
+    <text x="300" y="370" fill="white" text-anchor="middle">14.75 м</text>
+    <text x="10" y="200" fill="white" transform="rotate(-90,10,200)">10.00 м</text>
+    <rect x="150" y="100" width="40" height="200" fill="#aaaaaa" stroke="white"/>
+    <rect x="410" y="100" width="40" height="200" fill="#aaaaaa" stroke="white"/>
+    <text x="170" y="90" fill="white" text-anchor="middle" font-size="12">Конт 1</text>
+    <text x="430" y="90" fill="white" text-anchor="middle" font-size="12">Конт 2</text>
+    <text x="300" y="200" fill="#e94560" text-anchor="middle">Зазор 5.80 м</text>
+  </svg>
+</div>
+<div id="lathing" class="panel">
+  <button class="btn-print" onclick="printPanel('lathing')">Печать Обрешетка</button>
+  <svg id="lathing-svg" viewBox="0 0 800 400">
+    <line x1="50" y1="350" x2="750" y2="350" stroke="white" stroke-width="2"/>
+    <line x1="50" y1="350" x2="400" y2="50" stroke="#ff4444" stroke-width="3"/>
+    <text x="400" y="30" fill="white" text-anchor="middle" font-size="16">ОБРЕШЕТКА СКАТА (разрез)</text>
+    <text x="400" y="380" fill="white" text-anchor="middle">Длина ската: 12.00 м, шаг трапов: 300 мм</text>
+    <line x1="80" y1="340" x2="120" y2="340" stroke="#00ccff" stroke-width="4"/>
+    <line x1="140" y1="328" x2="180" y2="328" stroke="#00ccff" stroke-width="4"/>
+    <line x1="200" y1="315" x2="240" y2="315" stroke="#00ccff" stroke-width="4"/>
+    <line x1="260" y1="302" x2="300" y2="302" stroke="#00ccff" stroke-width="4"/>
+    <line x1="320" y1="289" x2="360" y2="289" stroke="#00ccff" stroke-width="4"/>
+    <line x1="380" y1="276" x2="420" y2="276" stroke="#00ccff" stroke-width="4"/>
+    <line x1="440" y1="263" x2="480" y2="263" stroke="#00ccff" stroke-width="4"/>
+    <line x1="500" y1="250" x2="540" y2="250" stroke="#00ccff" stroke-width="4"/>
+    <line x1="560" y1="237" x2="600" y2="237" stroke="#00ccff" stroke-width="4"/>
+    <line x1="620" y1="224" x2="660" y2="224" stroke="#00ccff" stroke-width="4"/>
+    <line x1="680" y1="211" x2="720" y2="211" stroke="#00ccff" stroke-width="4"/>
+    <text x="100" y="335" fill="white" font-size="10">трап</text>
+    <text x="200" y="310" fill="white" font-size="10">→ ходьба при засыпке</text>
+  </svg>
+</div>
+<div id="node" class="panel">
+  <button class="btn-print" onclick="printPanel('node')">Печать Узел</button>
+  <svg id="node-svg" viewBox="0 0 600 400">
+    <rect x="100" y="250" width="120" height="90" fill="#888888" stroke="white" stroke-width="1"/>
+    <text x="160" y="300" fill="white" text-anchor="middle" font-size="12">Контейнер</text>
+    <line x1="80" y1="250" x2="220" y2="50" stroke="#ff4444" stroke-width="3"/>
+    <rect x="210" y="60" width="30" height="15" fill="#8b4513" stroke="white" stroke-width="1"/>
+    <text x="260" y="72" fill="white" font-size="12">Стропило (пакет 3×100×50)</text>
+    <circle cx="220" cy="250" r="4" fill="yellow"/>
+    <text x="240" y="255" fill="yellow" font-size="12">Точка касания ската</text>
+    <text x="50" y="40" fill="white" font-size="16" font-weight="bold">УЗЕЛ ПРИМЫКАНИЯ</text>
+    <text x="50" y="70" fill="white" font-size="12">Угол 52°</text>
+  </svg>
+</div>
+<div id="bunker" class="panel">
+  <button class="btn-print" onclick="printPanel('bunker')">Печать Бункер</button>
+  <svg id="bunker-svg" viewBox="0 0 400 800">
+    <rect x="100" y="50" width="200" height="700" fill="none" stroke="white" stroke-width="2"/>
+    <text x="200" y="30" fill="white" text-anchor="middle" font-size="16">40-фут контейнер</text>
+    <text x="200" y="770" fill="white" text-anchor="middle" font-size="12">Песок (~65 т)</text>
+    <rect x="130" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/>
+    <rect x="230" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/>
+    <text x="150" y="400" fill="white" text-anchor="middle" transform="rotate(90,150,400)">Кирпичный канал</text>
+    <text x="250" y="400" fill="white" text-anchor="middle" transform="rotate(90,250,400)">Кирпичный канал</text>
+    <path d="M80,200 Q90,180 100,200 T120,200" fill="none" stroke="#00ffcc" stroke-width="2"/>
+    <text x="70" y="180" fill="#00ffcc" font-size="10">Змеевик ГВС</text>
+    <path d="M280,500 Q290,480 300,500 T320,500" fill="none" stroke="#ff9900" stroke-width="2"/>
+    <text x="290" y="480" fill="#ff9900" font-size="10">Паровой змеевик</text>
+  </svg>
+</div><script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(name).classList.add('active');
+    document.querySelector(`.tab[onclick*="${name}"]`).classList.add('active');
+    if (name === '3d') init3D();
+  }
+
+  function printPanel(name) {
+    const panel = document.getElementById(name);
+    const clone = panel.cloneNode(true);
+    const win = window.open('', '_blank');
+    win.document.write('<html><head><title>BLACK COCOON - Чертеж</title></head><body style="background:white; display:flex; justify-content:center;">');
+    win.document.write(clone.innerHTML);
+    win.document.write('</body></html>');
+    win.document.close();
+    win.print();
+  }
+
+  function init3D() {
+    if (window._3dready) return;
+    window._3dready = true;
+    const panel = document.getElementById('3d');
+    panel.innerHTML = '<button class="btn-print" onclick="printPanel(\'3d\')">Печать 3D</button>';
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.onload = function() {
+      const orbitScript = document.createElement('script');
+      orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';
+      orbitScript.onload = function() {
+        const W = 14.75, L = 10.0, H = 9.44;
+        const scene = new THREE.Scene(); scene.background = new THREE.Color(0x111122);
+        const camera = new THREE.PerspectiveCamera(45, panel.clientWidth / panel.clientHeight, 0.1, 1000);
+        camera.position.set(15, 10, 20); camera.lookAt(0, 0, 4);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(panel.clientWidth, panel.clientHeight);
+        panel.appendChild(renderer.domElement);
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.target.set(0, 0, 4); controls.update();
+        scene.add(new THREE.AmbientLight(0x404066));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8); dirLight.position.set(10, 20, 15); scene.add(dirLight);
+        function addLine(p1, p2, color) {
+          const g = new THREE.BufferGeometry();
+          g.setAttribute('position', new THREE.BufferAttribute(new Float32Array([p1.x, p1.y, p1.z, p2.x, p2.y, p2.z]), 3));
+          scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color })));
+        }
+        const v0 = new THREE.Vector3(-W/2, -L/2, 0), v1 = new THREE.Vector3(W/2, -L/2, 0), v2 = new THREE.Vector3(W/2, L/2, 0), v3 = new THREE.Vector3(-W/2, L/2, 0);
+        const v4 = new THREE.Vector3(0, -L/2, H), v5 = new THREE.Vector3(0, L/2, H);
+        addLine(v0, v1, 0xffffff); addLine(v1, v2, 0xffffff); addLine(v2, v3, 0xffffff); addLine(v3, v0, 0xffffff);
+        addLine(v0, v4, 0xff4444); addLine(v1, v4, 0xff4444); addLine(v2, v5, 0xff4444); addLine(v3, v5, 0xff4444);
+        addLine(v4, v5, 0x4444ff);
+        scene.add(new THREE.GridHelper(15, 20, 0x333366, 0x333366));
+        function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
+        animate();
+        window.addEventListener('resize', () => { camera.aspect = panel.clientWidth / panel.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(panel.clientWidth, panel.clientHeight); });
+      };
+      document.head.appendChild(orbitScript);
+    };
+    document.head.appendChild(script);
+  }
+
+  window.onload = function() { switchTab('3d'); };
+</script>
 </body>
 </html>
