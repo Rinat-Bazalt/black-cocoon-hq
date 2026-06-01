@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACK COCOON — Живая база контактов</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        h1 { text-align: center; color: #e94560; }
+        .add-form { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .add-form input { flex: 1; min-width: 150px; padding: 10px; background: #16213e; border: 1px solid #0f3460; color: white; border-radius: 5px; }
+        .add-form button { padding: 10px 20px; background: #e94560; border: none; color: white; border-radius: 5px; cursor: pointer; }
+        .add-form button:hover { background: #ff6b81; }
+        table { width: 100%; border-collapse: collapse; background: #16213e; border-radius: 5px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #0f3460; }
+        th { color: #e94560; }
+        .btn-delete { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+        .btn-delete:hover { background: #ff6666; }
+    </style>
+</head>
+<body>
+    <h1>📇 BLACK COCOON — Живая база контактов</h1>
+    <div class="add-form">
+        <input type="text" id="name" placeholder="Имя / Компания">
+        <input type="text" id="phone" placeholder="Телефон">
+        <input type="text" id="material" placeholder="Материал (кирпич, стекло...)">
+        <input type="text" id="price" placeholder="Цена (20 руб/шт)">
+        <input type="text" id="location" placeholder="Где (Солнечногорск)">
+        <input type="text" id="notes" placeholder="Заметки">
+        <button onclick="addContact()">➕ Добавить</button>
+    </div>
+    <table id="contacts-table">
+        <thead>
+            <tr>
+                <th>Имя / Компания</th>
+                <th>Телефон</th>
+                <th>Материал</th>
+                <th>Цена</th>
+                <th>Где</th>
+                <th>Заметки</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="contacts-body">
+            <!-- Контакты будут добавляться сюда -->
+        </tbody>
+    </table>
+
+    <script>
+        // При загрузке страницы загружаем контакты из localStorage
+        window.onload = function() {
+            loadContacts();
+            // Сразу добавляем контакт Вячеслава, если база пуста
+            if (!localStorage.getItem('cocoon_contacts')) {
+                const defaultContacts = [
+                    {name: "Вячеслав", phone: "+79670462065", material: "Кирпич шамотный б/у", price: "20 руб/шт", location: "Котельная (МО)", notes: "10 000 шт., самовывоз. Звонить!"}
+                ];
+                localStorage.setItem('cocoon_contacts', JSON.stringify(defaultContacts));
+                loadContacts();
+            }
+        };
+
+        function loadContacts() {
+            const data = localStorage.getItem('cocoon_contacts');
+            const contacts = data ? JSON.parse(data) : [];
+            const tbody = document.getElementById('contacts-body');
+            tbody.innerHTML = '';
+            contacts.forEach((c, index) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${c.name}</td>
+                    <td>${c.phone}</td>
+                    <td>${c.material}</td>
+                    <td>${c.price}</td>
+                    <td>${c.location}</td>
+                    <td>${c.notes}</td>
+                    <td><button class="btn-delete" onclick="deleteContact(${index})">❌</button></td>
+                `;
+            });
+        }
+
+        function addContact() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const material = document.getElementById('material').value.trim();
+            const price = document.getElementById('price').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const notes = document.getElementById('notes').value.trim();
+            if (!name || !phone) { alert('Имя и телефон обязательны!'); return; }
+
+            const data = localStorage.getItem('cocoon_contacts');
+            const contacts = data ? JSON.parse(data) : [];
+            contacts.push({name, phone, material, price, location, notes});
+            localStorage.setItem('cocoon_contacts', JSON.stringify(contacts));
+            // Очищаем поля
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('material').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('notes').value = '';
+            loadContacts();
+        }
+
+        function deleteContact(index) {
+            const data = localStorage.getItem('cocoon_contacts');
+            const contacts = data ? JSON.parse(data) : [];
+            contacts.splice(index, 1);
+            localStorage.setItem('cocoon_contacts', JSON.stringify(contacts));
+            loadContacts();
+        }
+    </script>
+</body>
+</html>
