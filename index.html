@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLACK COCOON - Цифровой Штаб v2</title>
+  <title>BLACK COCOON - Цифровой Штаб (Финальный Фронтон)</title>
   <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; display: flex; flex-direction: column; height: 100vh; }
     .tabs { display: flex; background: #16213e; border-bottom: 2px solid #0f3460; flex-wrap: wrap; }
@@ -28,31 +28,43 @@
   <div class="tab" onclick="switchTab('bunker')">Тепловой бункер</div>
 </div>
 
+<!-- 3D Каркас -->
 <div id="3d" class="panel active">
   <button class="btn-print" onclick="printPanel('3d')">Печать 3D</button>
 </div>
+
+<!-- Фронтон (Финальная усечённая трапеция) -->
 <div id="front" class="panel">
   <button class="btn-print" onclick="printPanel('front')">Печать Фронтон</button>
   <svg id="front-svg" viewBox="0 0 800 600">
+    <!-- Основание (14.75 м) -->
     <line x1="100" y1="500" x2="700" y2="500" stroke="white" stroke-width="2"/>
-    <line x1="100" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/>
-    <line x1="700" y1="500" x2="400" y2="116" stroke="#ff4444" stroke-width="3"/>
-    <text x="400" y="30" fill="white" text-anchor="middle" font-size="20" font-weight="bold">ФРОНТОН (Вид спереди)</text>
-    <text x="380" y="520" fill="white" text-anchor="end" font-size="14">Основание: 14.75 м</text>
-    <text x="420" y="520" fill="white" text-anchor="start" font-size="14">Высота: 9.44 м</text>
-    <text x="60" y="300" fill="white" font-size="14" transform="rotate(-90,60,300)">Длина ската: 12.00 м</text>
-    <rect x="182" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/>
-    <text x="231" y="430" fill="white" text-anchor="middle" font-size="12">Конт.</text>
-    <text x="231" y="445" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
-    <rect x="518" y="394" width="99" height="106" fill="#888888" stroke="white" stroke-width="1"/>
-    <text x="567" y="430" fill="white" text-anchor="middle" font-size="12">Конт.</text>
-    <text x="567" y="445" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
-    <line x1="281" y1="420" x2="518" y2="420" stroke="#e94560" stroke-width="2" stroke-dasharray="5,5"/>
-    <text x="399" y="415" fill="#e94560" text-anchor="middle" font-size="14">5.80 м</text>
-    <circle cx="182" cy="394" r="3" fill="yellow"/>
-    <circle cx="617" cy="394" r="3" fill="yellow"/>
+    <!-- Южный скат до высоты 7.5 м -->
+    <line x1="100" y1="500" x2="338" y2="200" stroke="#ff4444" stroke-width="3"/>
+    <!-- Северный скат до высоты 7.5 м -->
+    <line x1="700" y1="500" x2="462" y2="200" stroke="#4444ff" stroke-width="3"/>
+    <!-- Верхняя грань (3.03 м) -->
+    <line x1="338" y1="200" x2="462" y2="200" stroke="#ffaa00" stroke-width="4"/>
+    <!-- Подписи -->
+    <text x="400" y="30" fill="white" text-anchor="middle" font-size="20" font-weight="bold">ФРОНТОН — Финальная трапеция (7.50 м)</text>
+    <text x="400" y="520" fill="white" text-anchor="middle" font-size="14">Основание: 14.75 м | Верхняя грань: 3.03 м</text>
+    <!-- Контейнеры (касание сохранено) -->
+    <rect x="183" y="395" width="99" height="105" fill="#888888" stroke="white" stroke-width="1"/>
+    <text x="232" y="440" fill="white" text-anchor="middle" font-size="12">Конт.</text>
+    <text x="232" y="455" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
+    <rect x="518" y="395" width="99" height="105" fill="#888888" stroke="white" stroke-width="1"/>
+    <text x="567" y="440" fill="white" text-anchor="middle" font-size="12">Конт.</text>
+    <text x="567" y="455" fill="white" text-anchor="middle" font-size="10">2.44×2.59</text>
+    <!-- Зазор (5.80 м) -->
+    <line x1="282" y1="420" x2="518" y2="420" stroke="#e94560" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="400" y="415" fill="#e94560" text-anchor="middle" font-size="14">5.80 м</text>
+    <!-- Точки касания -->
+    <circle cx="183" cy="395" r="3" fill="yellow"/>
+    <circle cx="617" cy="395" r="3" fill="yellow"/>
   </svg>
 </div>
+
+<!-- Вид сбоку -->
 <div id="side" class="panel">
   <button class="btn-print" onclick="printPanel('side')">Печать Вид сбоку</button>
   <svg id="side-svg" viewBox="0 0 800 200">
@@ -61,10 +73,12 @@
     <line x1="750" y1="100" x2="750" y2="20" stroke="#ff4444" stroke-width="3"/>
     <line x1="50" y1="20" x2="750" y2="20" stroke="#4444ff" stroke-width="2"/>
     <text x="400" y="15" fill="white" text-anchor="middle">Длина: 10.00 м</text>
-    <text x="400" y="120" fill="white" text-anchor="middle">Скат: 12.00 м</text>
-    <text x="30" y="60" fill="white" transform="rotate(-90,30,60)">Высота: 9.44 м</text>
+    <text x="400" y="120" fill="white" text-anchor="middle">Скат: 9.52 м</text>
+    <text x="30" y="60" fill="white" transform="rotate(-90,30,60)">Высота: 7.50 м</text>
   </svg>
 </div>
+
+<!-- Вид сверху -->
 <div id="top" class="panel">
   <button class="btn-print" onclick="printPanel('top')">Печать Вид сверху</button>
   <svg id="top-svg" viewBox="0 0 600 400">
@@ -79,13 +93,16 @@
     <text x="300" y="200" fill="#e94560" text-anchor="middle">Зазор 5.80 м</text>
   </svg>
 </div>
+
+<!-- Обрешётка ската -->
 <div id="lathing" class="panel">
   <button class="btn-print" onclick="printPanel('lathing')">Печать Обрешетка</button>
   <svg id="lathing-svg" viewBox="0 0 800 400">
     <line x1="50" y1="350" x2="750" y2="350" stroke="white" stroke-width="2"/>
     <line x1="50" y1="350" x2="400" y2="50" stroke="#ff4444" stroke-width="3"/>
     <text x="400" y="30" fill="white" text-anchor="middle" font-size="16">ОБРЕШЕТКА СКАТА (разрез)</text>
-    <text x="400" y="380" fill="white" text-anchor="middle">Длина ската: 12.00 м, шаг трапов: 300 мм</text>
+    <text x="400" y="380" fill="white" text-anchor="middle">Длина ската: 9.52 м, шаг трапов: 300 мм</text>
+    <!-- Ступени (трапы) -->
     <line x1="80" y1="340" x2="120" y2="340" stroke="#00ccff" stroke-width="4"/>
     <line x1="140" y1="328" x2="180" y2="328" stroke="#00ccff" stroke-width="4"/>
     <line x1="200" y1="315" x2="240" y2="315" stroke="#00ccff" stroke-width="4"/>
@@ -101,6 +118,8 @@
     <text x="200" y="310" fill="white" font-size="10">→ ходьба при засыпке</text>
   </svg>
 </div>
+
+<!-- Узел касания -->
 <div id="node" class="panel">
   <button class="btn-print" onclick="printPanel('node')">Печать Узел</button>
   <svg id="node-svg" viewBox="0 0 600 400">
@@ -115,22 +134,28 @@
     <text x="50" y="70" fill="white" font-size="12">Угол 52°</text>
   </svg>
 </div>
+
+<!-- Тепловой бункер -->
 <div id="bunker" class="panel">
   <button class="btn-print" onclick="printPanel('bunker')">Печать Бункер</button>
   <svg id="bunker-svg" viewBox="0 0 400 800">
     <rect x="100" y="50" width="200" height="700" fill="none" stroke="white" stroke-width="2"/>
     <text x="200" y="30" fill="white" text-anchor="middle" font-size="16">40-фут контейнер</text>
     <text x="200" y="770" fill="white" text-anchor="middle" font-size="12">Песок (~65 т)</text>
+    <!-- Кирпичные каналы -->
     <rect x="130" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/>
     <rect x="230" y="100" width="40" height="600" fill="#8b4513" stroke="white" stroke-width="1"/>
     <text x="150" y="400" fill="white" text-anchor="middle" transform="rotate(90,150,400)">Кирпичный канал</text>
     <text x="250" y="400" fill="white" text-anchor="middle" transform="rotate(90,250,400)">Кирпичный канал</text>
+    <!-- Змеевики -->
     <path d="M80,200 Q90,180 100,200 T120,200" fill="none" stroke="#00ffcc" stroke-width="2"/>
     <text x="70" y="180" fill="#00ffcc" font-size="10">Змеевик ГВС</text>
     <path d="M280,500 Q290,480 300,500 T320,500" fill="none" stroke="#ff9900" stroke-width="2"/>
     <text x="290" y="480" fill="#ff9900" font-size="10">Паровой змеевик</text>
   </svg>
-</div><script>
+</div>
+
+<script>
   function switchTab(name) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -161,7 +186,7 @@
       const orbitScript = document.createElement('script');
       orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';
       orbitScript.onload = function() {
-        const W = 14.75, L = 10.0, H = 9.44;
+        const W = 14.75, L = 10.0, H = 7.5;
         const scene = new THREE.Scene(); scene.background = new THREE.Color(0x111122);
         const camera = new THREE.PerspectiveCamera(45, panel.clientWidth / panel.clientHeight, 0.1, 1000);
         camera.position.set(15, 10, 20); camera.lookAt(0, 0, 4);
@@ -178,10 +203,11 @@
           scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color })));
         }
         const v0 = new THREE.Vector3(-W/2, -L/2, 0), v1 = new THREE.Vector3(W/2, -L/2, 0), v2 = new THREE.Vector3(W/2, L/2, 0), v3 = new THREE.Vector3(-W/2, L/2, 0);
-        const v4 = new THREE.Vector3(0, -L/2, H), v5 = new THREE.Vector3(0, L/2, H);
+        const topWidth = W * (9.44 - H) / 9.44;
+        const v4 = new THREE.Vector3(-topWidth/2, -L/2, H), v5 = new THREE.Vector3(topWidth/2, -L/2, H), v6 = new THREE.Vector3(topWidth/2, L/2, H), v7 = new THREE.Vector3(-topWidth/2, L/2, H);
         addLine(v0, v1, 0xffffff); addLine(v1, v2, 0xffffff); addLine(v2, v3, 0xffffff); addLine(v3, v0, 0xffffff);
-        addLine(v0, v4, 0xff4444); addLine(v1, v4, 0xff4444); addLine(v2, v5, 0xff4444); addLine(v3, v5, 0xff4444);
-        addLine(v4, v5, 0x4444ff);
+        addLine(v0, v4, 0xff4444); addLine(v1, v5, 0xff4444); addLine(v2, v6, 0x4444ff); addLine(v3, v7, 0x4444ff);
+        addLine(v4, v5, 0xffaa00); addLine(v5, v6, 0xffaa00); addLine(v6, v7, 0xffaa00); addLine(v7, v4, 0xffaa00);
         scene.add(new THREE.GridHelper(15, 20, 0x333366, 0x333366));
         function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
         animate();
